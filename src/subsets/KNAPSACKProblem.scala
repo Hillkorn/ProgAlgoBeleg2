@@ -21,7 +21,6 @@ trait KNAPSACKProblem {
    // sums the profit of a List of items connected with a quota (determined by greedy)
    // input: List(itemIndex, quota)
   def sumGain(sol:List[(Int, Double)]):Double = sol match {
-    
     case Nil => 0
     case x::xs => items(x._1)._1*x._2.toDouble + sumGain(xs) 
   }

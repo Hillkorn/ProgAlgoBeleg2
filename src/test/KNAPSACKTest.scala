@@ -36,20 +36,20 @@ class KNAPSACKTest extends FunSuite{
 //	  assert(y===24.8)
 //	}
 //  
-  test("Findung des Optimums - 10 Elemente - Klasse SubsetsKNAPSACK"){
-    val (x,y,z)= subs.findOptimum(Set(0,1,2,3,4,5,6,7,8,9),29)
-    assert(x===38)
-  }
+//  test("Findung des Optimums - 10 Elemente - Klasse SubsetsKNAPSACK"){
+//    val (x,y,z)= subs.findOptimum(Set(0,1,2,3,4,5,6,7,8,9),29)
+//    assert(x===38)
+//  }
 //  
 //  test("Findung des Optimums - 10 Elemente - Klasse OwnSubsetsKNAPSACK"){
 //    val (x,y,z)= ownsubs.findOptimum(Set(0,1,2,3,4,5,6,7,8,9),29)
 //    assert(x===38)
 //  }
 //  
-//  test("Findung des Optimums - 10 Elemente - Klasse SimpleBacktracking"){
-//    val (x,y,z)=simback.findOptimum((0 until 10).toSet,29)
-//    assert((x=== 38))
-//  }
+  test("Findung des Optimums - 10 Elemente - Klasse SimpleBacktracking"){
+    val (x,y,z)=simback.findOptimum((0 until 10).toSet,29)
+    assert((x=== 38))
+  }
 //  
 //  test("Findung des Optimums - 10 Elemente - Klasse Dynamic Programming"){
 //    val (x,y,z)=simback.findOptimum((0 until 10).toSet,29)
