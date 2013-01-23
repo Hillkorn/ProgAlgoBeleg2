@@ -85,20 +85,20 @@ class KNAPSACKTest extends FunSuite{
 //    assert(x===153)
 //    }
 //  
-//    test("Findung des Optimums - 25 Elemente - Klasse SimpleBacktracking"){
-//    val (x,y,z)=simback.findOptimum((0 until 25).toSet,150)
-//    assert(x===303)
-//    }
+    test("Findung des Optimums - 25 Elemente - Klasse SimpleBacktracking"){
+      val (x,y,z)=simback.findOptimum((0 until 25).toSet,150)
+      assert(x===303)
+    }
 //
 //    test("Findung des Optimums - 25 Elemente - Klasse Dynamic Programming"){
 //    val (x,y,z)=dynprog.findOptimum((0 until 25).toSet,150)
 //    assert(x===303)
 //    }
 //
-//    test("Findung des Optimums - 30 Elemente - Klasse SimpleBacktracking"){
-//    val (x,y,z)=simback.findOptimum((0 until 30).toSet,300)
-//    assert(x===418)
-//  }
+  test("Findung des Optimums - 30 Elemente - Klasse SimpleBacktracking"){
+    val (x,y,z)=simback.findOptimum((0 until 30).toSet,300)
+    assert(x===418)
+  }
 //
 //   test("Findung des Optimums - 30 Elemente - Klasse DynamicProgramming"){
 //    val (x,y,z)=dynprog.findOptimum((0 until 30).toSet,300)
