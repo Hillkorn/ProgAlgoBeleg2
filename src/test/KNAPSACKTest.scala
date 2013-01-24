@@ -112,7 +112,7 @@ class KNAPSACKTest extends FunSuite{
 //    assert(x===418)
 //  }
   
-  test("Findung des Optimums - 30 Elemente - Klasse BranchAndBound"){
+  test("Findung des Optimums - 30 Elemente - Klasse BoundAndBranch"){
 //    println(greedy.findGreedyOptimum((0 until 30).toSet,300))
     val (x,y,z)=bab.findOptimum((0 until 30).toSet,300)
     assert(x===418)
@@ -127,7 +127,7 @@ class KNAPSACKTest extends FunSuite{
 //    val (x,y,z)=dynprog.findOptimum((0 until 40).toSet,600)
 //    assert(x===854)
 //  }
-  test("Findung des Optimums - 40 Elemente - Klasse BranchAndBound"){
+  test("Findung des Optimums - 40 Elemente - Klasse BoundAndBranch"){
     val (x,y,z)=bab.findOptimum((0 until 40).toSet,600)
     assert(x===854)
   }
