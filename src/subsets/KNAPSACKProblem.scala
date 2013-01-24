@@ -1,5 +1,6 @@
 package subsets
 import common._
+import com.sun.xml.internal.bind.v2.TODO
 
 trait KNAPSACKProblem {
 
@@ -29,16 +30,26 @@ trait KNAPSACKProblem {
   // transforms a set (describe by indices) of items into a tuple (described above)
   // sorts the items by the ratio profit/weight
   def sortItems(itemlist:Set[Int]):Unit= {
-    def sortItemsInner(itemlistInner:Set[Int]):List[(Int,(Int,Int),Double)] = {
-	    if(itemlistInner.size == 1) {
-	      List((itemlistInner.head, (items(itemlistInner.head)._1, items(itemlistInner.head)._2),items(itemlistInner.head)._1.toDouble/items(itemlistInner.head)._2))
-	    } else {
-	      sortItemsInner(itemlistInner.filter(x => items(x)._1/items(x)._2 < items(itemlistInner.head)._1/items(itemlistInner.head)._2))++List((itemlist.head, (items(itemlistInner.head)._1, items(itemlistInner.head)._2),items(itemlist.head)._1.toDouble/items(itemlist.head)._2.toDouble))++sortItemsInner(itemlist.filter(x => items(x)._1/items(x)._2 >= items(itemlist.head)._1/items(itemlist.head)._2))
-	    }
-    }
-    sortedItems = sortItemsInner(itemlist).toArray
+      sortedItems = Array()
+      itemlist.foreach { index =>
+          sortedItems = sortedItems :+ (index,(items(index)._1,items(index)._2), items(index)._1/items(index)._2.toDouble)
+      }
+      sortedItems = sortedItems.sortWith((x,y) => (x._3 > y._3))
   }
 
-  // calculates the greedy-Optimum
-  def findGreedyOptimum(itemlist:Set[Int], capacity:Int):(Set[(Int, Double)], Double)= ???
+  def findGreedyOptimum(itemlist:Set[Int], capacity:Int):(Set[(Int, Double)], Double)= {
+      sortItems(itemlist)
+      var r:List[(Int, Double)] = List()
+      var c = capacity
+      sortedItems.foreach { element =>
+          if(element._2._2 < c) {
+                r = (element._1, 1.0)::r
+                c -= element._2._2
+          } else {
+               r = (element._1, c/element._2._2.toDouble)::r
+               return (r.toSet, sumGain(r))
+          }       
+      }
+      return (r.toSet, 0.0)
+  }
 }

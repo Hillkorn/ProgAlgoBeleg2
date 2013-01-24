@@ -14,12 +14,14 @@ class KNAPSACKTest extends FunSuite{
   class SubSown extends OwnSubsetsKNAPSACK with KNAPSACKProblem with KNAPSACKInstance
   class SimBack extends SimpleBacktracking with KNAPSACKProblem with KNAPSACKInstance
   class DynProg extends DynamicProgramming with KNAPSACKProblem with KNAPSACKInstance
+  class BAB extends BoundAndBranch with KNAPSACKProblem with KNAPSACKInstance
   
   val greedy= new Greedy
   val subs= new SubS
   val ownsubs= new SubSown
   val simback= new SimBack
   val dynprog= new DynProg
+  val bab = new BAB
   
 //  test("Test der Funktion getValues"){
 //	  val x=greedy.getValues(Set(0,1,2,3,4,5,6))
@@ -46,10 +48,15 @@ class KNAPSACKTest extends FunSuite{
 //    assert(x===38)
 //  }
 //  
-  test("Findung des Optimums - 10 Elemente - Klasse SimpleBacktracking"){
-    val (x,y,z)=simback.findOptimum((0 until 10).toSet,29)
-    assert((x=== 38))
-  }
+//  test("Findung des Optimums - 10 Elemente - Klasse SimpleBacktracking"){
+//    val (x,y,z)=simback.findOptimum((0 until 10).toSet,29)
+//    assert((x=== 38))
+//  }
+//  
+//  test("Findung des Optimums - 10 Elemente - Klasse Dynamic Programming"){
+//    val (x,y,z)=simback.findOptimum((0 until 10).toSet,29)
+//    assert((x=== 38))
+//  }
 //  
 //  test("Findung des Optimums - 10 Elemente - Klasse Dynamic Programming"){
 //    val (x,y,z)=simback.findOptimum((0 until 10).toSet,29)
@@ -70,6 +77,11 @@ class KNAPSACKTest extends FunSuite{
 //    val (x,y,z)=simback.findOptimum((0 until 20).toSet,29)
 //    assert((x== 113))
 //  }
+//
+//  test("Findung des Optimums - 20 Elemente - Klasse BranchAndBound"){
+//    val (x,y,z)=bab.findOptimum((0 until 20).toSet,29)
+//    assert((x== 113))
+//  }
 //    test("Findung des Optimums - 20 Elemente - Klasse Dynamic Programming"){
 //    val (x,y,z)=dynprog.findOptimum((0 until 20).toSet,29)
 //    assert((x=== 113))
@@ -85,18 +97,24 @@ class KNAPSACKTest extends FunSuite{
 //    assert(x===153)
 //    }
 //  
-    test("Findung des Optimums - 25 Elemente - Klasse SimpleBacktracking"){
-      val (x,y,z)=simback.findOptimum((0 until 25).toSet,150)
-      assert(x===303)
-    }
+//    test("Findung des Optimums - 25 Elemente - Klasse SimpleBacktracking"){
+//      val (x,y,z)=simback.findOptimum((0 until 25).toSet,150)
+//      assert(x===303)
+//    }
 //
 //    test("Findung des Optimums - 25 Elemente - Klasse Dynamic Programming"){
 //    val (x,y,z)=dynprog.findOptimum((0 until 25).toSet,150)
 //    assert(x===303)
 //    }
 //
-  test("Findung des Optimums - 30 Elemente - Klasse SimpleBacktracking"){
-    val (x,y,z)=simback.findOptimum((0 until 30).toSet,300)
+//  test("Findung des Optimums - 30 Elemente - Klasse SimpleBacktracking"){
+//    val (x,y,z)=simback.findOptimum((0 until 30).toSet,300)
+//    assert(x===418)
+//  }
+  
+  test("Findung des Optimums - 30 Elemente - Klasse BranchAndBound"){
+//    println(greedy.findGreedyOptimum((0 until 30).toSet,300))
+    val (x,y,z)=bab.findOptimum((0 until 30).toSet,300)
     assert(x===418)
   }
 //
@@ -109,5 +127,9 @@ class KNAPSACKTest extends FunSuite{
 //    val (x,y,z)=dynprog.findOptimum((0 until 40).toSet,600)
 //    assert(x===854)
 //  }
+  test("Findung des Optimums - 40 Elemente - Klasse BranchAndBound"){
+    val (x,y,z)=bab.findOptimum((0 until 40).toSet,600)
+    assert(x===854)
+  }
 }
   

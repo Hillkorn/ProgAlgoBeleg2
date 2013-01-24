@@ -28,8 +28,6 @@ trait SimpleBacktracking {
     	val sol = for (x <- itemList) yield { if(items(x)._2+tempResult._2 <= capacity) { restItems = restItems-x; innerFindOptimum(restItems, (tempResult._1+items(x)._1, tempResult._2+items(x)._2, tempResult._3+x)) } else { tempResult } }
     	sol.foldLeft((0,0,Set(0)))((x,z) => if (x._1 > z._1) x else z)
       } else {
-        if (tempResult._1 > 400)
-          println(tempResult)
 	    tempResult
       }
     }
